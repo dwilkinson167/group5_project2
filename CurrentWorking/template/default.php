@@ -58,12 +58,13 @@
         		        <?php if ( ! empty($cartItems)): ?>
         			        <?php foreach ($cartItems as $i => $item): ?>
         			        <div class="field">
-        				        <label><?php echo $item['item']->getName(); ?> [ <?php echo $item['item']->getCost() ?> ]</label>
+                                <label><?php echo $item['item']->getDescription() ?> [ <?php echo $item['item']->getCost() ?> ]</label>
                                 <br />
-        				        <span> Amount: </span><input type="text"  class="ui-state-default amount-box" name="amount_<?php echo $i ?>" value="<?php echo $item['amount'] ?>" disabled="disabled" />
+
+                                <span> Amount: </span><input type="text"  class="ui-state-default amount-box" name="amount_<?php echo $i ?>" value="<?php echo $item['amount'] ?>" disabled="disabled" />
         				        <label for="remove_product_<?php echo $i ?>">Remove from cart </label>
                                 <input type="checkbox" name="remove_product[]" id="remove_product_<?php echo $i ?>" value="<?php echo $i ?>" />
-        			        </div>		
+        			        </div>
         			        <?php endforeach; ?>
         			        <hr class="separator ui-state-disabled" />
         			        <label>Total with tax</label>
@@ -83,7 +84,7 @@
         	        <fieldset class="products">
                 <?php foreach ($products as $product): ?>
         		        <div class="field">
-        			        <label for="product_<?php echo $product->id ?>"><?php echo $item['item']->getName();  echo $item['item']->getDescription() . ' - ' . $product->getCost(); ?></label>
+        			        <label for="product_<?php echo $product->id ?>"><?php echo $product->getDescription() . ' - ' . $product->getCost(); ?></label>
         			        <input type="checkbox" id="product_<?php echo $product->id; ?>" name="product_check[]" value="<?php echo $product->id ?>" />
         		        </div>
                 <?php endforeach; ?>
@@ -92,8 +93,9 @@
         	        </fieldset>
                 </form>
             </div>
-        
 
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
             <script type="text/javascript" src="js/default.js"></script>
         </main>
 
