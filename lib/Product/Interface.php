@@ -11,4 +11,8 @@ interface Product_Interface
     public function getDescription();
 
     public function setDescription($description = NULL);
+
+    public function getName();
+
+    public function setName($name = NULL);
 }
