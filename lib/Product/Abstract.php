@@ -14,6 +14,9 @@ abstract class Product_Abstract implements Product_Interface
      */
     protected $_cost = NULL;
 
+
+    protected  $_name = NULL;
+
     /**
      * Product attributes describing the properties of the product
      * @var unknown_type
@@ -53,6 +56,19 @@ abstract class Product_Abstract implements Product_Interface
         return $this;
     }
 
+
+
+    public function setName($name = NULL)
+    {
+        if (NULL === $name) {
+            throw new Exception('Name cannot be null');
+        }
+
+        $this->_description = $name;
+
+        return $this;
+    }
+
     /**
      * @return float cost of product
      */
@@ -69,6 +85,11 @@ abstract class Product_Abstract implements Product_Interface
         return $this->_description;
     }
 
+
+    public function getName()
+    {
+        return $this->_name;
+    }
     /**
      * Fetch a custom attribute
      * @param string $key attribute key
@@ -91,7 +112,7 @@ abstract class Product_Abstract implements Product_Interface
     public function __set($key = NULL, $value = NULL)
     {
         if (NULL === $key OR NULL === $value) {
-            throw new Exception('Key and value for setting an atribute must be set');
+            throw new Exception('Key and value for setting an attribute must be set');
         }
 
         $this->_attributes[$key] = $value;
@@ -110,6 +131,10 @@ abstract class Product_Abstract implements Product_Interface
 
             case 'description':
                 return isset($this->_description);
+                break;
+
+            case 'name':
+                return isset($this->_name);
                 break;
 
             default:
